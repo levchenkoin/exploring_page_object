@@ -34,6 +34,7 @@ class BasePage():
             return False
         return True
     
+    '''
     def solve_quiz_and_get_code(self):
         WebDriverWait(self.browser, 3).until(EC.alert_is_present())
         alert = self.browser.switch_to.alert
@@ -48,3 +49,4 @@ class BasePage():
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+    '''

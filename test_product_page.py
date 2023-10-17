@@ -1,7 +1,7 @@
 from selenium.common.exceptions import NoAlertPresentException
 import pytest
 import math
-from .pages.base_page import BasePage
+#from .pages.base_page import BasePage
 from .pages.product_page import ProductPage
 
 class TestProductPage():
@@ -13,6 +13,7 @@ class TestProductPage():
         page.add_product_to_basket()
 
     def solve_quiz_and_get_code(self):
+        WebDriverWait(self.browser, 3).until(EC.alert_is_present())
         alert = self.browser.switch_to.alert
         x = alert.text.split(" ")[2]
         answer = str(math.log(abs((12 * math.sin(float(x))))))
