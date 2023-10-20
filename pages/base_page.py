@@ -1,6 +1,7 @@
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.common.exceptions import NoSuchElementException
 import math
+import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -15,7 +16,7 @@ class BasePage():
     def open(self):
         self.browser.get(self.url)
 
-    def __init__(self, browser, url, timeout=10):
+    def __init__(self, browser, url, timeout=2):
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
@@ -34,13 +35,16 @@ class BasePage():
             return False
         return True
     
-    '''
+
     def solve_quiz_and_get_code(self):
-        WebDriverWait(self.browser, 3).until(EC.alert_is_present())
         alert = self.browser.switch_to.alert
         x = alert.text.split(" ")[2]
+        print(x)
         answer = str(math.log(abs((12 * math.sin(float(x))))))
+        print(answer)
+        # Switch to the alert
         alert.send_keys(answer)
+        # Accept the alert
         alert.accept()
         try:
             alert = self.browser.switch_to.alert
@@ -49,4 +53,3 @@ class BasePage():
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
-    '''
