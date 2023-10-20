@@ -13,9 +13,6 @@ class TestProductPage():
         page.open()                     
         page.add_product_to_basket()
         page.solve_quiz_and_get_code()
-        time.sleep(10)
-
-    #def test_guest_can_see_product_in_basket(self, browser):
-        #page = ProductPage(browser)
+        time.sleep(5)
         page.product_in_basket()
         page.price_in_basket()

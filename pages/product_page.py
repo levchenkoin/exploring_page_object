@@ -15,14 +15,17 @@ class ProductPage(BasePage):
         add_product_button.click()
 
     def product_in_basket(self):
-        check_name_in_basket = self.browser.find_element(*BasketCheckLocators.NAME_IN_BASKET)
+        check_name_in_basket = self.browser.find_element(*BasketCheckLocators.NAME_IN_BASKET).text
         print (check_name_in_basket)
-        assert self.is_element_present(*BasketCheckLocators.PRODUCT_NAME), "Incorrect product in basket"
-        #check_product_name = self.browser.find_element(*BasketCheckLocators.PRODUCT_NAME)
+        check_product_name = self.browser.find_element(*BasketCheckLocators.PRODUCT_NAME).text
+        print (check_product_name)
+        assert check_name_in_basket == check_product_name, "Incorrect product in basket"        
 
 
     def price_in_basket(self):
-        check_basket_price = self.browser.find_element(*BasketCheckLocators.BASKET_PRICE)
+        check_basket_price = self.browser.find_element(*BasketCheckLocators.BASKET_PRICE).text
         print (check_basket_price)
-        assert self.is_element_present(*BasketCheckLocators.PRODUCT_PRICE), "Incorrect price in basket"
-        #check_product_price = self.browser.find_element(*BasketCheckLocators.PRODUCT_PRICE)
+        check_product_price = self.browser.find_element(*BasketCheckLocators.PRODUCT_PRICE).text
+        print (check_product_price)
+        assert check_basket_price == check_product_price, "Incorrect price in basket"
+        
