@@ -53,3 +53,4 @@ class TestLoginFromMainPage():
     #page = ProductPage(browser, link)
     #page.open()
     #page.should_be_login_link()
+#testops
