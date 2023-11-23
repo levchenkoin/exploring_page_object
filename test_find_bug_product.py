@@ -25,4 +25,4 @@ def test_guest_can_add_product_to_basket(browser, link):
     page.product_in_basket()
     page.price_in_basket()
 
-#test update
+#test update again
